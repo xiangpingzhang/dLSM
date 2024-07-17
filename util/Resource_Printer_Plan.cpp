@@ -246,7 +246,7 @@ double Resource_Printer_PlanB::getCurrentValue() {
 #ifdef CALCULATE_MAX_UTIL
     if (max_util < percent){
       max_util = static_cast<double>(percent);
-      printf("Max utilization is %f\n", max_util);
+      //printf("Max utilization is %f\n", max_util);
     }
 #endif
     current_percent = percent;

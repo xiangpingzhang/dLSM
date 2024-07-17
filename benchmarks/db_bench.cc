@@ -161,9 +161,9 @@ class Duration {
     ops_ = 0;
     start_at_ = g_env->NowMicros();
   }
-
+  //return the stage of current operation 
   int64_t GetStage() { return std::min(ops_, max_ops_ - 1) / ops_per_stage_; }
-
+  //check if achieve the maxium operation or time 
   bool Done(int64_t increment) {
     if (increment <= 0) increment = 1;    // avoid Done(0) and infinite loops
     ops_ += increment;
@@ -189,6 +189,7 @@ class Duration {
   int64_t ops_;
   uint64_t start_at_;
 };
+//wrapped other Comparator object and compare operation count
 class CountComparator : public Comparator {
  public:
   CountComparator(const Comparator* wrapped) : wrapped_(wrapped) {}
@@ -247,7 +248,7 @@ class RandomGenerator {
     return Slice(data_.data() + pos_ - len, len);
   }
 };
-
+//Key buffer generate key with specific prefix and format
 class KeyBuffer {
  public:
   KeyBuffer() {
@@ -290,6 +291,7 @@ static void AppendWithSpace(std::string* str, Slice msg) {
   str->append(msg.data(), msg.size());
 }
 
+// state class used for track and reort perfomance :excute time、operation num、# of transfered data
 class Stats {
  private:
   double start_;
@@ -537,7 +539,7 @@ struct ThreadState {
 };
 
 }  // namespace
-
+//A performance tesing framework designed to benchmark various operations on database('TimberSaw')
 class Benchmark {
  private:
   Cache* cache_;

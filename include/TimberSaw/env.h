@@ -40,7 +40,11 @@
 #define TimberSaw_DELETEFILE_UNDEFINED
 #endif  // defined(DeleteFile)
 #endif  // defined(_WIN32)
-
+/*
+Explain from chatgpt:
+                  这个头文件定义了一个名为 Env 的抽象基类，以及若干相关的类和函数，用于文件系统操作和其他与操作系统相关的功能，
+                  主要用于 TimberSaw 数据库实现。这些功能包括文件读取、写入、删除、目录管理、文件锁定、日志记录、多线程调度等。
+*/
 namespace TimberSaw {
 
 class FileLock;

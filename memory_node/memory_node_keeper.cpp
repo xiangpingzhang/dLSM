@@ -1840,7 +1840,7 @@ int Memory_Node_Keeper::server_sock_connect(const char* servername, int port) {
           send_pointer->content.cpu_info.core_number = rdma_mg->rpter.numa_bind_core_num;
 //#ifndef NDEBUG
           if (print_counter++ == 200){
-            printf("Current cpu utilization is %f\n", cpu_util_percentage);
+            //printf("Current cpu utilization is %f\n", cpu_util_percentage);
             print_counter = 0;
           }
 //#endif
@@ -1962,7 +1962,7 @@ int Memory_Node_Keeper::server_sock_connect(const char* servername, int port) {
     asm volatile ("lfence\n" : : );
     asm volatile ("mfence\n" : : );
     if (counter == 1000){
-      std::fprintf(stderr, "Polling install version handler\r");
+      //std::fprintf(stderr, "Polling install version handler\r");
       std::fflush(stderr);
       counter = 0;
     }
@@ -2392,7 +2392,7 @@ int Memory_Node_Keeper::server_sock_connect(const char* servername, int port) {
       asm volatile ("sfence\n" : : );
       asm volatile ("lfence\n" : : );
       asm volatile ("mfence\n" : : );
-      std::fprintf(stderr, "Polling sync option handler\n");
+      //std::fprintf(stderr, "Polling sync option handler\n");
       std::fflush(stderr);
     }
     *opts = *static_cast<Options*>(edit_recv_mr.addr);
